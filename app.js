@@ -62,7 +62,7 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
         div.appendChild(authorElement)
         div.appendChild(titleElement);
         post.appendChild(div);
-        if (child.data.thumbnail !== 'self') {
+        if (child.data.thumbnail !== 'self' && child.data.secure_media === null) {
             console.log(child.data.thumbnail)
             let thumbnail = child.data.thumbnail
             const thumbnailElement = document.createElement('img')
