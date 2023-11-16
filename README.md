@@ -14,10 +14,10 @@ Your goal is to build a teeny, tiny website that allows users to search for subr
 
 You should implement the following features:
 
-- [ ] When a user types the name of a subreddit into the search bar and hits the "search" button, your website should display all of the titles for reddit posts from that subreddit.  
-- [ ] Search results should also display the username of the account that authored the post.
-- [ ] When a user clicks a username, your site should redirect to their profile page on reddit.
+- [] When a user types the name of a subreddit into the search bar and hits the "search" button, your website should display all of the titles for reddit posts from that subreddit.  
+- [✅] Search results should also display the username of the account that authored the post.
+- [✅] When a user clicks a username, your site should redirect to their profile page on reddit.
 - [ ] All errors coming from fetch calls should be displayed in user-friendly form in the "error-alert" div.
 - [ ] Feel free to have fun with this!  Explore the data, think up interesting new features and try to implement them!  
 - [ ] Some basic CSS is provided, but you can customize it so that your site reflects your style!
-
+- [ ] 

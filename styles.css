@@ -14,6 +14,12 @@ h1 {
   background-color: #FF5700;
 }
 
+.post-card {
+  border: 1px solid rgba(0, 0, 0, 0.664);
+  margin-top: 5px;
+  padding: 0px 20px 0px 20px;
+}
+
 form#search-form {
   display: flex;
   flex-flow: row nowrap
