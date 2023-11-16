@@ -1,9 +1,20 @@
 // addEventListener to run the fetch code
 const errorDiv = document.querySelector('#error-alert')
+let darkMode = false
+
+document.querySelector("#darkModeToggle").addEventListener('click', (e) => {
+    if (darkMode){
+        darkMode = false
+        document.body.classList.remove('dark-mode')
+    } else {
+        darkMode = true
+        document.body.classList.add('dark-mode')
+    }
+})
 
 document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
     e.preventDefault()
-    let subredditName = e.target.parentNode.children[0].value
+    let subredditName = e.target.parentNode.children[1].value
     fetch(`https://www.reddit.com/r/${subredditName}.json`)
     .catch((err) => {
         document.querySelector('#search-results-list').innerText = `Hmmm, It seems that the subreddit "${subredditName}" does not exist, please try another one?`
@@ -46,8 +57,8 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
         authorLink.target = "_blank";
         authorElement.appendChild(authorLink);
 
-        post.appendChild(titleElement);
         post.appendChild(authorElement);
+        post.appendChild(titleElement);
 
         ul.appendChild(post);
       }
