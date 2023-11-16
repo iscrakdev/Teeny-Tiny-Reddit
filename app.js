@@ -1,31 +1,31 @@
 // addEventListener to run the fetch code
-const errorDiv = document.querySelector('#error-alert')
-let darkMode = false
+const errorDiv = document.querySelector("#error-alert");
+let darkMode = false;
 
-document.querySelector("#darkModeToggle").addEventListener('click', (e) => {
-    if (darkMode){
-        darkMode = false
-        document.body.classList.remove('dark-mode')
-    } else {
-        darkMode = true
-        document.body.classList.add('dark-mode')
-    }
-})
+document.querySelector("#darkModeToggle").addEventListener("click", (e) => {
+  if (darkMode) {
+    darkMode = false;
+    document.body.classList.remove("dark-mode");
+  } else {
+    darkMode = true;
+    document.body.classList.add("dark-mode");
+  }
+});
 
 document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
-    e.preventDefault()
-    let subredditName = e.target.parentNode.children[1].value
-    fetch(`https://www.reddit.com/r/${subredditName}.json`)
+  e.preventDefault();
+  let subredditName = e.target.parentNode.children[1].value;
+  fetch(`https://www.reddit.com/r/${subredditName}.json`)
     .catch((err) => {
-        document.querySelector('#search-results-list').innerText = `Hmmm, It seems that the subreddit "${subredditName}" does not exist, please try another one?`
-        return
+      document.querySelector(
+        "#search-results-list"
+      ).innerText = `Hmmm, It seems that the subreddit "${subredditName}" does not exist, please try another one?`;
+      return;
     })
     .then((data) => {
-        console.log(data)
-        return data.json()
+      return data.json();
     })
-    .then((data) => {
-        console.log(data.data.children.length)
+    .then(async (data) => {
       const subreddit = data;
       const ul = document.querySelector("#search-results-list");
       ul.innerHTML = "";
@@ -37,7 +37,6 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
         let postURL = "https://www.reddit.com" + child.data.permalink;
         let authorURL = `https://www.reddit.com/user/${author}/`;
         let title = child.data.title;
-        console.log(child.data)
 
         const post = document.createElement("li");
         post.classList.add("post-card");
@@ -48,10 +47,9 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
         const authorElement = document.createElement("p");
         const authorLink = document.createElement("a");
 
-        const div = document.createElement("div")
+        const div = document.createElement("div");
 
         titleLink.href = postURL;
-        console.log(postURL)
         titleLink.innerText = title;
         titleLink.target = "_blank";
         titleElement.appendChild(titleLink);
@@ -61,18 +59,19 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
         authorLink.target = "_blank";
         authorElement.appendChild(authorLink);
 
-        div.appendChild(authorElement)
+        div.appendChild(authorElement);
         div.appendChild(titleElement);
-        console.log(div)
         post.appendChild(div);
-        if (child.data.thumbnail !== 'self' && child.data.secure_media === null) {
-            console.log(child.data.thumbnail)
-            let thumbnail = child.data.thumbnail
-            const thumbnailElement = document.createElement('img')
-            thumbnailElement.src = thumbnail
-            post.append(thumbnailElement)
+        if (
+          child.data.thumbnail !== "self" &&
+          child.data.secure_media === null
+        ) {
+          let thumbnail = child.data.thumbnail;
+          const thumbnailElement = document.createElement("img");
+          thumbnailElement.src = thumbnail;
+          post.append(thumbnailElement);
         }
-        console.log(post)
+        console.log(post);
         ul.appendChild(post);
       }
     });
