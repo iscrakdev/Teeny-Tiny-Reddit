@@ -14,6 +14,12 @@ a {
   color: black;
 }
 
+.dark-mode a {
+  text-decoration: none;
+  color: white;
+}
+
+
 h1 {
   width: 100%;
   margin-top: 0px;
@@ -64,4 +70,14 @@ form#search-form {
 
 .hidden {
   display: none;
+}
+
+.blue-link {
+  text-decoration: underline;
+  color: blue;
+}
+
+.dark-mode .blue-link {
+  text-decoration: underline;
+  color: cyan; 
 }
