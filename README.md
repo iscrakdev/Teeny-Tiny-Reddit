@@ -18,6 +18,5 @@ You should implement the following features:
 - [✅] Search results should also display the username of the account that authored the post.
 - [✅] When a user clicks a username, your site should redirect to their profile page on reddit.
 - [✅] All errors coming from fetch calls should be displayed in user-friendly form in the "error-alert" div.
-- [ ] Feel free to have fun with this!  Explore the data, think up interesting new features and try to implement them!  
+- [✅] Feel free to have fun with this!  Explore the data, think up interesting new features and try to implement them!  
 - [✅] Some basic CSS is provided, but you can customize it so that your site reflects your style!
-- [ ] Images if they exist for the post 

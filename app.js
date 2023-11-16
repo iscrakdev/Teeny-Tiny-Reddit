@@ -47,6 +47,8 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
         const authorElement = document.createElement("p");
         const authorLink = document.createElement("a");
 
+        const div = document.createElement("div")
+
         titleLink.href = postURL;
         titleLink.innerText = title;
         titleLink.target = "_blank";
@@ -57,8 +59,16 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
         authorLink.target = "_blank";
         authorElement.appendChild(authorLink);
 
-        post.appendChild(authorElement);
-        post.appendChild(titleElement);
+        div.appendChild(authorElement)
+        div.appendChild(titleElement);
+        post.appendChild(div);
+        if (child.data.thumbnail !== 'self') {
+            console.log(child.data.thumbnail)
+            let thumbnail = child.data.thumbnail
+            const thumbnailElement = document.createElement('img')
+            thumbnailElement.src = thumbnail
+            post.append(thumbnailElement)
+        }
 
         ul.appendChild(post);
       }
