@@ -34,9 +34,10 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
         // get information (author, title, upvotes?, link)
         // console.log(child.data);
         let author = child.data.author;
-        let postURL = child.data.url;
+        let postURL = "https://www.reddit.com" + child.data.permalink;
         let authorURL = `https://www.reddit.com/user/${author}/`;
         let title = child.data.title;
+        console.log(child.data)
 
         const post = document.createElement("li");
         post.classList.add("post-card");
@@ -50,6 +51,7 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
         const div = document.createElement("div")
 
         titleLink.href = postURL;
+        console.log(postURL)
         titleLink.innerText = title;
         titleLink.target = "_blank";
         titleElement.appendChild(titleLink);
@@ -61,6 +63,7 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
 
         div.appendChild(authorElement)
         div.appendChild(titleElement);
+        console.log(div)
         post.appendChild(div);
         if (child.data.thumbnail !== 'self' && child.data.secure_media === null) {
             console.log(child.data.thumbnail)
@@ -69,7 +72,7 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
             thumbnailElement.src = thumbnail
             post.append(thumbnailElement)
         }
-
+        console.log(post)
         ul.appendChild(post);
       }
     });
