@@ -67,15 +67,19 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
           child.data.secure_media === null &&
           child.data.thumbnail !== ""
         ) {
-          let thumbnail = child.data.thumbnail;
+          const thumbnailAnchor = document.createElement("a");
+          thumbnailAnchor.href = titleLink
+          thumbnailAnchor.target = '_blank'
+          const thumbnail = child.data.thumbnail;
           const thumbnailElement = document.createElement("img");
           thumbnailElement.src = thumbnail;
-          post.append(thumbnailElement);
+          thumbnailAnchor.append(thumbnailElement)
+          post.append(thumbnailAnchor);
         } else {
           const selfTextContainer = document.createElement("p");
           const link = document.createElement("a");
           link.classList.add("blue-link");
-          link.target = '_blank'
+          link.target = "_blank";
           link.innerText = " read more...";
           link.href = postURL;
           selfTextContainer.innerText = selfText.slice(0, 200);
