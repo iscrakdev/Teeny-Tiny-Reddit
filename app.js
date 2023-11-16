@@ -78,7 +78,7 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
           link.target = '_blank'
           link.innerText = " read more...";
           link.href = postURL;
-          selfTextContainer.innerText = selfText.slice(0, 100);
+          selfTextContainer.innerText = selfText.slice(0, 200);
           selfTextContainer.appendChild(link);
           div.appendChild(selfTextContainer);
         }
