@@ -16,12 +16,6 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
   e.preventDefault();
   let subredditName = e.target.parentNode.children[1].value;
   fetch(`https://www.reddit.com/r/${subredditName}.json`)
-    .catch((err) => {
-      document.querySelector(
-        "#search-results-list"
-      ).innerText = `Hmmm, It seems that the subreddit "${subredditName}" does not exist, please try another one?`;
-      return;
-    })
     .then((data) => {
       return data.json();
     })
@@ -68,12 +62,12 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
           child.data.thumbnail !== ""
         ) {
           const thumbnailAnchor = document.createElement("a");
-          thumbnailAnchor.href = titleLink
-          thumbnailAnchor.target = '_blank'
+          thumbnailAnchor.href = titleLink;
+          thumbnailAnchor.target = "_blank";
           const thumbnail = child.data.thumbnail;
           const thumbnailElement = document.createElement("img");
           thumbnailElement.src = thumbnail;
-          thumbnailAnchor.append(thumbnailElement)
+          thumbnailAnchor.append(thumbnailElement);
           post.append(thumbnailAnchor);
         } else {
           const selfTextContainer = document.createElement("p");
@@ -89,5 +83,11 @@ document.querySelector("#search-bar-submit").addEventListener("click", (e) => {
 
         ul.appendChild(post);
       }
+    })
+    .catch((err) => {
+      document.querySelector(
+        "#search-results-list"
+      ).innerText = `Hmmm, It seems that the subreddit "${subredditName}" does not exist, please try another one?`;
+      return;
     });
 });
